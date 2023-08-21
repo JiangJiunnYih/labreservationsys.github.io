@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+</style>
+  <title>LAB 814 公用電腦使用預約系統 - Login</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    body {
+  font-family: Arial;
+  background-image: url('loginpage.jpg');
+  
+  height: 100%; 
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+}
+    
+    form { max-width: 250px; margin: 0 auto; }
+    input { width: 100%; padding: 10px; margin-bottom: 10px; }
+    button { width: 109%; padding: 10px; background-color: #039BE5; color: #fff; border: none; cursor: pointer; }
+    button:hover { background-color: #0277BD; }
+    h2 { text-align: center; } /* Center the h2 element */
+  </style>
+</head>
+<body>
+  <h2>LAB 814 公用電腦使用預約系統</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <br>
+    <button type="button" id="loginButton">Login</button>
+  </form>
+
+<script>
+    function performLogin() {
+      // Get the values from the form fields
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const username_secur = btoa(username);
+      const password_secur = btoa(password);
+
+      if (username_secur === "bGFiODE0" && password_secur === "d2F0ZXJsYWI4MTQ=") {
+        alert("登入成功，歡迎使用預約系統");
+        sessionStorage.setItem('isLoggedIn', 'true');
+        window.location.assign("https://sites.google.com/view/lab814-com-reservation-sys/首頁");
+      } else {
+        alert("帳號或密碼錯誤，請再試一次");
+      }
+    }
+
+    document.getElementById("loginButton").addEventListener("click", performLogin);
+
+    // Add event listener for Enter key on both input fields
+    document.getElementById("username").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        performLogin();
+      }
+    });
+
+    document.getElementById("password").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        performLogin();
+      }
+    });
+  </script>
+
+  
+</body>
+</html>
